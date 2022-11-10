@@ -1,0 +1,22 @@
+{
+    "name": "ebialas/projeto01",
+    "description": "Um projeto completo em MVC para um Petshop",
+    "autoload": {
+        "psr-4": {
+            "Petshop\\": "src/"
+        },
+        "files": [
+            "config/constants.php", 
+            "config/parameters.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Eduardo Bialas",
+            "email": "eb006439@cfjl.com"
+        }
+    ],
+    "require": {
+        "bramus/router": "^1.6"
+    }
+}
