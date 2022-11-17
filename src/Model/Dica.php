@@ -7,7 +7,7 @@ use Petshop\Core\Attribute\Campo;
 
 //dicas
 #[Entidade(name: 'dicas')]
-class Dica
+class Dica extends DAO
 {
     #[Campo(label:'Cód. Dica', nn:true, pk:true, auto:true)]
     protected $iddica;
