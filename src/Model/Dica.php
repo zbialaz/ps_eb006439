@@ -1,9 +1,11 @@
 <?php 
 
-namespace Petshop\Core;
+namespace Petshop\Model;
 
+use Exception;
 use Petshop\Core\Attribute\Entidade;
 use Petshop\Core\Attribute\Campo;
+use Petshop\Core\DAO;
 
 //dicas
 #[Entidade(name: 'dicas')]
@@ -36,6 +38,10 @@ class Dica extends DAO
 
     public function setTitulo($titulo): self
     {
+        $titulo = trim($titulo);
+        if (!$titulo) {
+            throw new Exception('Título é inválido');
+        }
         $this->titulo = $titulo;
         return $this;
     }

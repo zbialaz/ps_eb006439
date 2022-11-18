@@ -2,8 +2,48 @@
 
 namespace Petshop\Core;
 
+use Exception;
+use Petshop\Core\Attribute\Campo;
+use Petshop\Core\Attribute\Entidade;
+
 class DAO 
 {
+
+    /**
+     * Função ue objetiva retornas as metainformações
+     * da classe, baseando-se para isso na leitura dos Attributes
+     *
+     * @return array Propriedades da Entidade (tabela e campos)
+     */
+    public function getTableInfo() : array
+    {
+        //vetor que armazenará as informações da classe
+        //referente ás tabelas e campo do banco de dados
+        $info = [];
+
+
+        //pegando as metainformações a classe referente
+        //ao objeto atual instanciado
+        $ref = new \ReflectionClass($this::class);
+        foreach($ref->getAttributes(Entidade::class) as $attrTable) {
+            $info['tabela'] = $attrTable->getArguments();
+
+            //procurando as metainformações das propriedades a classe
+            foreach($ref->getProperties() as $propriedade) {
+            //pra cada campo/prop localizada, procura seus atributos
+            foreach($propriedade->getAttributes(Campo::class) as $attrCampo) {
+                $info['campos'][$propriedade->getName()] = $attrCampo->getArguments();
+                }
+            } 
+        }
+
+        if (!isset($info['tabela']) || !isset($info['campos'])) {
+            throw new Exception('Os atributos a classe/propriedades não foram preenchidos');
+        }
+
+        return $info;
+
+    }
     /**
      * Método GET para acesso direto via nomes de
      * propriedades da classe 
