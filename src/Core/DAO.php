@@ -135,4 +135,37 @@ class DAO
         }
         return '';
     }
+    /**
+     * Função genérica que busca os dados do banco de dados para a entidade 
+     * relacionado ao objeto instanciado
+     *
+     * @param array $params  Os parâmetros de condição de busca da, ex: ['titulo ='=>'Teste']
+     * @param array $order Os campos de ordenação, ex ['titulo desc' 'dtcad]
+     * @param string $columns As colunas do SELECT (separadas por vírgulas)
+     * @return array
+     */
+    public function find(array $params=[], array $order=[], string $columns='*') : array
+    {
+        $where = '';
+        if (count($params) ) {
+            $where = 'WHERE' . implode(' ? and ', array_keys($params) ) . ' ? ';
+            die($where);
+        }
+
+        $orderBy = '';
+        if (count($order) ) {
+        $orderBy = 'ORDER BY ' . implode(', ', $order);
+        } elseif( $this->getOrderByField() ) {
+            $orderBy = 'ORDER BY ' . $this->getOrderByField();
+        }
+       $sql = sprintf(
+        'SELECT %s FROM %s %s %s',
+        $columns,
+        $this->getTableName(),
+        $where,
+        $orderBy
+       );
+
+       DB::select($sql, array_values($params));
+    }
 }
