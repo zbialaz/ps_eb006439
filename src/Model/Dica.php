@@ -12,9 +12,9 @@ use Petshop\Core\DAO;
 class Dica extends DAO
 {
     #[Campo(label:'Cód. Dica', nn:true, pk:true, auto:true)]
-    protected $iddica;
+    protected $idDica;
 
-    #[Campo(label:'Título', nn:true)]
+    #[Campo(label:'Título', nn:true, order:true)]
     protected $titulo;
 
     #[Campo(label:'Descrição', nn:true)]
