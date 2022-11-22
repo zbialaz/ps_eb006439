@@ -1,6 +1,8 @@
 <?php
 
-namespace Petshop\Core\;
+namespace Petshop\Core;
+
+use Petshop\Core\Exception;
 
 class DB
 {
@@ -59,7 +61,7 @@ class DB
             return $st->fetchAll(\PDO::FETCH_ASSOC);
         } catch(\PDOException $e) {
             error_log('Erro do PDO: '. $e->getMessage() . ' - Linha: ' . $e->getLine());
-            throw new Exeception('Erro ao realizar consulta no banco de dados');
+            throw new Exception('Erro ao realizar consulta no banco de dados');
         }
         return [];
     } 
@@ -90,7 +92,7 @@ class DB
             return $st;
         } catch(\PDOException $e) {
             error_log('Erro do PDO: '. $e->getMessage() . ' - Linha: ' . $e->getLine());
-            throw new Exeception('Erro ao executar comandos no banco de dados');
+            throw new Exception('Erro ao executar comandos no banco de dados');
         }
     } 
 }
