@@ -1,1 +1,1 @@
-olá, nós estamos na home.
+Olá, estamos na homepage.

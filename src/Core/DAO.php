@@ -255,10 +255,8 @@ class DAO
             $valorCampoChave
         );
 
-        DB::query($sql, $campos);
-
-        $this->loadById($valorCampoChave);
-
-        return true;
+    DB::query($sql, $campos);
+    $this->loadById($valorCampoChave);
+    return true;
     }
 }
