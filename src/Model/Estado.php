@@ -8,11 +8,10 @@ use Petshop\Core\DAO;
 
 //dicas
 #[Entidade(name: 'estados')]
-
 class Estado extends DAO
 {
 
-    #[Campo(label:'UF', nn:true, pk:true)]
+    #[Campo(label:'UF', nn:true, pk:true, auto:true)]
     protected $uf;
 
     #[Campo(label:'IBGE', nn:true)]

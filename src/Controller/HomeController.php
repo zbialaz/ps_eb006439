@@ -9,9 +9,9 @@ class HomeController
 {
    public function index()
    {
-      $estados = (new Estado())->find();
-   
 
+      $estados = (new Estado())->find();
+      
       $dados = [];
       $dados['titulo'] = 'Lista de Estados';
       $dados['estados'] = $estados;

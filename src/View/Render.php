@@ -1,10 +1,10 @@
- <?php 
+<?php 
 
- namespace Petshop\View;
+namespace Petshop\View;
 
-use Exception;
+use Petshop\Core\Exception;
 
- class Render
+class Render
  {
     /**
      * Método que carrega uma página com a estrutura FrontEnd,
@@ -35,7 +35,6 @@ use Exception;
         
         require_once TFRONTEND . 'common/top.php';
         require_once $pathPagina;
-        require_once TFRONTEND . 'common/botton.php';
     }
 
         /**
@@ -48,7 +47,7 @@ use Exception;
     static public function block(string $bloco, array $dados = [])
     {
         //monta o caminho local onde o bloco solicitada está
-        $pathArquivo = TFRONTEND . 'pages/' . $bloco . '.php';
+        $pathArquivo = TFRONTEND . 'blocks/' . $bloco . '.php';
 
         if ( !file_exists($pathArquivo) ) {
             error_log('Bloco não localizada em: '.$pathArquivo);
