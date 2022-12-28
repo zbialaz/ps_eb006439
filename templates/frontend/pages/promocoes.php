@@ -2,7 +2,7 @@
   <div class="site-card-promocoes">
 
     <?php
-    foreach ($promocao as $p) {
+    foreach ($promocoes as $p) {
       $imgLink = $p['imagens'][0]['url'] ?? '';
         
       echo <<<HTML
