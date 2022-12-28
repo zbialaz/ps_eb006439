@@ -2,7 +2,7 @@
 
 namespace Petshop\View;
 
-use Petshop\Core\Exception;
+use Exception;
 
 class Render
  {
@@ -35,6 +35,8 @@ class Render
         
         require_once TFRONTEND . 'common/top.php';
         require_once $pathPagina;
+        require_once TFRONTEND . 'common/bottom.php';
+
     }
 
         /**
@@ -46,25 +48,27 @@ class Render
      */
     static public function block(string $bloco, array $dados = [])
     {
-        //monta o caminho local onde o bloco solicitada está
-        $pathArquivo = TFRONTEND . 'blocks/' . $bloco . '.php';
+     //Monta o caminho do local onde bloco solicitado está
+     $pathArquivo = TEMPLATES . 'blocks/' . $bloco . '.php';
 
-        if ( !file_exists($pathArquivo) ) {
-            error_log('Bloco não localizada em: '.$pathArquivo);
-            throw new Exception("O bloco solicitada '{$pathArquivo}' não foi localizado");
-        }
+     if(!file_exists($pathArquivo)) {
+         error_log('Bloco não localizado em: '.$pathArquivo);
+         throw new Exception("O bloco solicitado '{$bloco}' não foi localizado");
+     }
 
-        //transforma os índices de vetores em variáveis 
-        extract($dados);
+     //transforma os indices do vetor em variáveis
+     extract($dados);
 
-        //iniciamos a captura do buffer para não printar ao usuário o
-        //conteúdo do arquivo que será requerido
-        ob_start();
+     //iniciamos  a captura do buffer para não printar ao úsuario o
+     //conteúdo do arquivo que será requerido
+     ob_start();
 
-        //carrega o conteúdo do arquivo em memória (estamos em OB_START)
-        require_once $pathArquivo;
+     //carrega o conteúdo do arquivo para o buffer (estamos em OB_START)
+     require_once $pathArquivo;
 
-        //retorna o conteúdo em buffer e limpa a memória
-        return ob_get_clean();
-    }
+     //retorna o conteúdo em buffer e limpa a memória
+     return ob_get_clean();
  }
+
+ 
+}
