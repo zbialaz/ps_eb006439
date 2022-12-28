@@ -13,7 +13,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">CRIADOR</h5>
-                                <p class="card-text">CONTEÚDO</p>
+                                <p class="card-text">PROMOCOES</p>
                                 <a href="#" class="btn btn-primary">NAVEGAR</a>
                             </div>
                         </div>
@@ -22,7 +22,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">CRIADOR</h5>
-                                <p class="card-text">CONTEÚDO</p>
+                                <p class="card-text">PROMOCOES</p>
                                 <a href="#" class="btn btn-primary">NAVEGAR</a>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                         <div class="card">
                             <div class="card-body">
                                 <h5 class="card-title">CRIADOR</h5>
-                                <p class="card-text">CONTEÚDO</p>
+                                <p class="card-text">PROMOCOES</p>
                                 <a href="#" class="btn btn-primary">NAVEGAR</a>
                             </div>
                         </div>

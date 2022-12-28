@@ -68,17 +68,25 @@ if (empty($cliente)) {
       <div class="topo-site-inferior-contatos col-6 row">
         <div class="col-auto d-flex align-items-center">
           <a href="/nossas-lojas" title="Conheça as nossas lojas">
-            <i class=“”bi bi-geo-alt-fill pe-1></i>
+            <i class="bi bi-shop pe-1"></i>
             <span>Nossas Lojas</span>
           </a>
         </div>
+
         <div class="col-auto d-flex align-items-center">
           <a href="/fale-conosco" title="Fale conosco">
             <i class="bi bi-megaphone-fill pe-1"></i>
             <span>Fale conosco</span>
           </a>
-
         </div>
+
+          <div class="col-auto d-flex align-items-center">
+          <a href="/promocoes" title="Promocoes">
+          <i class="pe-1 bi bi-bullseye"></i> 
+            <span>Promoções</span>
+          </a>
+          </div>
+      
       </div>
       <div class="topo-site-inferior-fone col-4 d-flex align-items-center justify-content-end">
         <i class="bi bi-telephone pe-2"></i>

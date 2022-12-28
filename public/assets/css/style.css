@@ -1,4 +1,4 @@
-/** CSS */ 
+ /** CSS */ 
 .topo-site
 {
     background-color: #231f20;
@@ -34,3 +34,32 @@
     background-color: transparent;
     width: 3em;
 }
+
+/*  RODAPÉ */
+
+.rodape-site {
+    background-color: #e4d0bc;
+    color: rgb(56, 39, 30);
+    min-height: 400px;
+}
+
+.rodape-site .pgto-social a,
+.rodape-site .pgto-social svg {
+    color: #777;
+    text-decoration: none;
+    transition: 200ms;
+}
+.rodape-site .pgto-social a:hover,
+.rodape-site .pgto-social svg:hover {
+color: #333;
+}
+
+.rodape-site {
+	position:relative;
+	bottom: 0;
+	}
+
+.rodape-site .info-matriz {
+    font-size: 8em ;
+}
+
