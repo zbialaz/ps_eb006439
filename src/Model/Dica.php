@@ -1,13 +1,12 @@
-<?php 
+<?php
 
 namespace Petshop\Model;
 
-use Petshop\Core\Attribute\Entidade;
 use Petshop\Core\Attribute\Campo;
+use Petshop\Core\Attribute\Entidade;
 use Petshop\Core\DAO;
 use Petshop\Core\Exception;
 
-//dicas
 #[Entidade(name: 'dicas')]
 class Dica extends DAO
 {
@@ -23,7 +22,7 @@ class Dica extends DAO
     #[Campo(label:'Dt. Criação', nn:true, auto:true)]
     protected $created_at;
 
-    #[Campo(label:'Alteração', nn:true, auto:true)]
+    #[Campo(label:'Dt. Alteração', nn:true, auto:true)]
     protected $updated_at;
 
     public function getIdDica()
@@ -35,7 +34,6 @@ class Dica extends DAO
     {
         return $this->titulo;
     }
-
     public function setTitulo($titulo): self
     {
         $titulo = trim($titulo);
@@ -50,7 +48,6 @@ class Dica extends DAO
     {
         return $this->descricao;
     }
-
     public function setDescricao($descricao): self
     {
         $this->descricao = $descricao;
@@ -61,10 +58,8 @@ class Dica extends DAO
     {
         return $this->created_at;
     }
-
     public function getUpdated_At()
     {
         return $this->updated_at;
     }
-
 }

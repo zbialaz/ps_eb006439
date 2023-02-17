@@ -2,7 +2,7 @@
     <div class="container">
         <div class="pgto-social row text-center">
             <div class="col-auto me-auto">
-                <strong> <i class="fa-regular fa-credit-card"></i>Aceitamos</strong>
+                <strong> <i class="fa-regular fa-credit-card"></i> Aceitamos</strong>
                 <div class="mt-2 pt-2 border-top border-secondary">
                     <i class="fa-brands fs-3 pe-2 fa-cc-visa"></i>
                     <i class="fa-brands fs-3 pe-2 fa-cc-mastercard"></i>
@@ -23,18 +23,16 @@
             </div>
         </div>
         <div class="info-matriz row mt-5 text-center">
-        </div>
-        <div>Preços e condições exclusivos para o <?= $site??'' ?> (exceto alimentos e bebidas), podendo sofrer alterações sem prévia notificação.</div>
+            <div>Preços e condições exclusivos para o http://localhost (exceto alimentos e bebidas), podendo sofrer alterações sem prévia notificação.</div>
             <div>
-            <?= $nomeFantasia??'' ?> |
-            <?= $site??'' ?> 
-            <?= $rua??'' ?> <?= $bairro??'' ?> Nr° <?= $numero??'' ?> |
-            <?= $cidade??'' ?> <?= $estado??'' ?> CEP: <?= $cep??'' ?> |
-            CNPJ: <?= $cnpj??'' ?> |
-            Telefones: <?= $telefone1??''?> - <?= $telefone2??''?>
-        </div>
-        <div>Observação: Ao utilizar o cupom de desconto, certifique que se que o mesmo esteja no período de validade.</div>
+                Bicho Novo: Seu Petshop Animal |
+                http://localhost |
+                Rua Principal, Centro, Nrº 100 |
+                Horizontina, Rio Grande Do Sul, CEP: 98920-000 |
+                CNPJ: 33.789.228/0001-61 |
+                Telefones: (55) 3537-1276 - (55) 9 9999-123 |
+            </div>
+            <div>Ao utilizar o copom de desconto, certifique-se que o mesmo está no período de validade.</div>
         </div>
     </div>
 </div>
-

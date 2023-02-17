@@ -8,70 +8,68 @@ use Petshop\Core\DAO;
 use Petshop\Core\Exception;
 
 #[Entidade(name: 'categorias')]
+
 class Categoria extends DAO
 {
-  #[Campo(label: 'Cód. Categoria', pk: true, nn: true, auto: true)]
-  protected $idCategoria;
+    #[Campo(label:'Cód. Categoria', nn:true, pk:true, auto:true)]
+    protected $idcategoria;
 
-  #[Campo(label: 'Nome', nn: true, order:true)]
-  protected $nome;
+    #[Campo(label:'Categoria', nn:true, order:true)]
+    protected $nome;
 
-  #[Campo(label: 'Descrição')]
-  protected $descricao;
+    #[Campo(label:'Descrição')]
+    protected $descricao;
 
-  #[Campo(label: 'Dt. Criação', nn: true, auto: true)]
-  protected $created_at;
+    #[Campo(label:'Dt. Criação', nn:true, auto:true)]
+    protected $created_at;
 
-  #[Campo(label: 'Dt. Alteração', nn: true, auto: true)]
-  protected $updated_at;
+    #[Campo(label:'Dt. Alteração', nn:true, auto:true)]
+    protected $updated_at;
 
-
-  public function getIdCategoria()
-  {
-    return $this->idCategoria;
-  }
-
-  public function getNome()
-  {
-    return $this->nome;
-  }
-
-  public function setNome(string $nome): self
-  {
-    $nome = trim($nome);
-    if (strlen($nome) < 3) {
-      throw new Exception('Nome de categoria inválido');
+    public function getIdcategoria()
+    {
+        return $this->idcategoria;
     }
 
-    $this->nome = $nome;
-    return $this;
-  }
-
-  public function getDescricao()
-  {
-    return $this->descricao;
-  }
-
-  public function setDescricao(string $descricao): self
-  {
-    $descricao = trim($descricao);
-    if ($descricao == '') {
-      $this->descricao = null;
-    } elseif (strlen($descricao) < 10) {
-      throw new Exception('Descrição inválida para categoria ');
+    public function getNome()
+    {
+        return $this->nome;
+    }
+    public function setNome($nome): self
+    {
+        $nome = trim($nome);
+        if (strlen($nome) < 3) {
+            throw new Exception('Categoria inválida');
+        }
+        $this->nome = $nome;
+        return $this;
     }
 
-    $this->descricao = $descricao;
-    return $this;
-  }
+    public function getDescricao()
+    {
+        return $this->descricao;
+    }
+    public function setDescricao($descricao): self
+    {
+        $descricao = trim($descricao);
+        if ($descricao == '') {
+            $this->descricao = null;
+            return $this;
+        } 
+        if (strlen($descricao) < 15) {
+            throw new Exception('Descrição inválida');
+        }
+        $this->descricao = $descricao;
+        return $this;
+    }
 
-  public function getCreated_At()
-  {
-    return $this->created_at;
-  }
+    public function getCreated_At()
+    {
+        return $this->created_at;
+    }
 
-  public function getUpdated_At()
-  {
-    return $this->updated_at;
-  }
+    public function getUpdated_At()
+    {
+        return $this->updated_at;
+    }
 }

@@ -4,7 +4,8 @@ namespace Petshop\Controller;
 
 use Petshop\View\Render;
 
-class AdminDashboardController {
+class AdminDashboardController
+{
     public function index()
     {
         $dados = [];

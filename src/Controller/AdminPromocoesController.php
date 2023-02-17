@@ -30,7 +30,7 @@ class AdminPromocoesController
     $dados['usuario'] = $_SESSION['usuario'];
     $dados['tabela'] = $htmlTabela;
 
-    Render::back('promocoes', $dados);
+    Render::back('promocao', $dados);
   }
 
   public function form($valor)
@@ -39,7 +39,7 @@ class AdminPromocoesController
       $objeto = new Promocao();
       $resultado = $objeto->find(['idpromocao=' => $valor]);
       if (empty($resultado)) {
-        redireciona('/admin/promocoes', 'danger', 'Link inválido, registro não localizado');
+        redireciona('/admin/promocao', 'danger', 'Link inválido, registro não localizado');
       }
       $_POST = $resultado[0];
       $_POST['senha'] = '';
@@ -49,7 +49,7 @@ class AdminPromocoesController
     $dados['titulo'] = 'Promoções - Manutenção';
     $dados['formulario'] = $this->renderizaFormulario(empty($_POST));
 
-    Render::back('promocoes', $dados);
+    Render::back('promocao', $dados);
   }
 
   public function postForm($valor)
@@ -58,7 +58,7 @@ class AdminPromocoesController
 
     if (is_numeric($valor)) {
       if (!$objeto->loadById($valor)) {
-        redireciona('/admin/promocoes', 'danger', 'Link inválido, registro não localizado');
+        redireciona('/admin/promocao', 'danger', 'Link inválido, registro não localizado');
       }
     }
 
@@ -82,7 +82,7 @@ class AdminPromocoesController
       $this->form($valor);
       exit;
     }
-    redireciona('/admin/promocoes', 'success', 'Alterações realizadas com SUCESSO');
+    redireciona('/admin/promocao', 'success', 'Alterações realizadas com SUCESSO');
   }
 
   public function renderizaFormulario($novo)
