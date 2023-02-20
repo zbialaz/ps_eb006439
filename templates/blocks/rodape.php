@@ -23,6 +23,7 @@
             </div>
         </div>
         <div class="info-matriz row mt-5 text-center">
+<<<<<<< HEAD
             <div>Preços e condições exclusivos para o <?=$site??''?> (exceto alimentos e bebidas), podendo sofrer alterações sem prévia notificação.</div>
             <div>
                 <?=$nomefantasia??''?> |
@@ -31,6 +32,16 @@
                 <?=$cidade??''?>, <?=$estado??''?>, CEP: <?=$cep??''?> |
                 CNPJ: <?=$nomefantasia??''?> |
                 Telefones: <?=$telefone1??''?> - <?=$telefone2??''?> |
+=======
+            <div>Preços e condições exclusivos para o http://localhost (exceto alimentos e bebidas), podendo sofrer alterações sem prévia notificação.</div>
+            <div>
+                Bicho Novo: Seu Petshop Animal |
+                http://localhost |
+                Rua Principal, Centro, Nrº 100 |
+                Horizontina, Rio Grande Do Sul, CEP: 98920-000 |
+                CNPJ: 33.789.228/0001-61 |
+                Telefones: (55) 3537-1276 - (55) 9 9999-123 |
+>>>>>>> 79c4b7819bb44b0e6544660731a2e94d37076284
             </div>
             <div>Ao utilizar o copom de desconto, certifique-se que o mesmo está no período de validade.</div>
         </div>

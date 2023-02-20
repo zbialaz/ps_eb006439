@@ -76,7 +76,11 @@ if (empty($cliente)) {
                 </div>
 
                 <div class="col-auto d-flex align-items-center">
+<<<<<<< HEAD
                     <a href="/promocoes" title="Promocoes">
+=======
+                    <a href="/promocao" title="Promocoes">
+>>>>>>> 79c4b7819bb44b0e6544660731a2e94d37076284
                         <i class="pe-1 bi bi-bullseye"></i>
                         <span>Promoções</span>
                     </a>
@@ -85,11 +89,16 @@ if (empty($cliente)) {
             </div>
             <div class="topo-site-inferior-fone col-4 justify-content-end d-flex align-items-center">
                 <i class="bi bi-telephone pe-2"></i>
+<<<<<<< HEAD
                 <span><?= $telefone1 ?? '' ?></span>
+=======
+                <span> (55) 3537-1276 </span>
+>>>>>>> 79c4b7819bb44b0e6544660731a2e94d37076284
             </div>
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 <div class="offcanvas offcanvas-start rounded-3 m-3" data-bs-scroll="true" tabindex="-1" id="offcanvas-menu" aria-labelledby="offcanvas-menuLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvas-menuLabel">Categorias do site</h5>
@@ -106,6 +115,25 @@ if (empty($cliente)) {
                     HTML;
             }
             ?>
+=======
+
+
+<div class="offcanvas offcanvas-start rounded-3 m-3" data-bs-scroll="true" tabindex="-1" id="offcanvas-menu" aria-labelledby="offcanvas-menuLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvas-menuLabel">Categorias dos Produtos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+    <div class="list-group">
+
+  </a>
+  <a href="#" class="list-group-item list-group-item-action">Beleza e Limpeza</a>
+  <a href="#" class="list-group-item list-group-item-action">Casa</a>
+  <a href="#" class="list-group-item list-group-item-action">Coleira e Peitorais</a>
+  <a href="#" class="list-group-item list-group-item-action">Gaiolas</a>
+  <a href="#" class="list-group-item list-group-item-action">Pestiscos</a>
+  <a href="#" class="list-group-item list-group-item-action">Rações especiais</a>
+  <a href="#" class="list-group-item list-group-item-action">Vitaminas</a>
+>>>>>>> 79c4b7819bb44b0e6544660731a2e94d37076284
         </div>
     </div>
 </div>
