@@ -116,15 +116,14 @@ class App
             self::$router->get('/produtos/{valor}', '\Petshop\Controller\AdminProdutoController@form');
             self::$router->post('/produtos/{valor}', '\Petshop\Controller\AdminProdutoController@postForm');
 
-<<<<<<< HEAD
             self::$router->get('/promocoes', '\Petshop\Controller\AdminPromocoesController@listar');
             self::$router->get('/promocoes/{valor}', '\Petshop\Controller\AdminPromocoesController@form');
             self::$router->post('/promocoes/{valor}', '\Petshop\Controller\AdminPromocoesController@postForm');
-=======
+
             self::$router->get('/promocao', '\Petshop\Controller\AdminPromocoesController@listar');
             self::$router->get('/promocao/{valor}', '\Petshop\Controller\AdminPromocoesController@form');
-            self::$router->post('/promocao/{valor}', '\Petshop\Controller\AdminPromocoesController@postForm');
->>>>>>> 79c4b7819bb44b0e6544660731a2e94d37076284
+            self::$router->post('/promocao/{valor}', '\Petshop\Controller\AdminPromocoesController@postForm'); 
+            
 
             self::$router->get('/imagens/(\w+)/(\d+)', '\Petshop\Controller\AdminImagemController@listar');
             self::$router->get('/imagens/(\w+)/(\d+)/(\w+)', '\Petshop\Controller\AdminImagemController@form');
