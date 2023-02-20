@@ -63,12 +63,7 @@ class App
         self::$router->get('/favoritos', '\Petshop\Controller\FavoritoController@listar');
         self::$router->get('/busca', '\Petshop\Controller\BuscaController@listar');
 
-
-<<<<<<< HEAD
         self::$router->get('/promocoes', '\Petshop\Controller\PromocaoController@listapromocao');
-=======
-        self::$router->get('/promocao', '\Petshop\Controller\PromocaoController@listapromocao');
->>>>>>> 79c4b7819bb44b0e6544660731a2e94d37076284
 
         self::$router->post('/login', '\Petshop\Controller\LoginController@postlogin');
         self::$router->post('/cadastro', '\Petshop\Controller\CadastroController@postCadastro');
