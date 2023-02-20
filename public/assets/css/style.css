@@ -1,31 +1,23 @@
- /** CSS */ 
-.topo-site
-{
+.topo-site {
     background-color: #231f20;
     color: #efe6dd;
 }
 
-.topo-site a
-{
+.topo-site a {
     color: #efe6dd;
-    text-decoration: none;   
     transition: 200ms;
 }
 
-.topo-site a:hover
-{
-    color: #f3dfa2;
-    
+.topo-site a:hover {
+    color: #f4dfa2;
 }
 
-.topo-site .input-busca
-{
+.topo-site .input-busca {
     box-shadow: none;
-    border-color: transparent;
+    border-color: transparent; 
 }
 
-.topo-site .btn-busca
-{
+.topo-site .btn-busca {
     position: absolute;
     top: 0;
     right: 0;
@@ -35,31 +27,46 @@
     width: 3em;
 }
 
-/*  RODAPÉ */
-
-.rodape-site {
-    background-color: #e4d0bc;
-    color: rgb(56, 39, 30);
-    min-height: 400px;
+.topo-site .dropdown-menu {
+    background-color: #231320;
 }
 
-.rodape-site .pgto-social a,
-.rodape-site .pgto-social svg {
+.rodape-site {
+    background-color:#efe6dd;
+    color:#777;
+}
+
+.pgto-social .fa-brands:hover {
+    color: #333;
+}
+
+.pgto-social a,
+.pgto-social svg {
     color: #777;
     text-decoration: none;
     transition: 200ms;
 }
+
 .rodape-site .pgto-social a:hover,
 .rodape-site .pgto-social svg:hover {
-color: #333;
+    color: #333;
 }
-
-.rodape-site {
-	position:relative;
-	bottom: 0;
-	}
 
 .rodape-site .info-matriz {
-    font-size: 8em ;
+    font-size: .8em;
 }
 
+/* classes de apoio */
+
+.pg-login .btn-conta {
+    margin-top: 5em;
+}
+
+.site-card-opcoes .card a {
+    text-decoration: none;
+    color:#231f20;
+}
+
+.site-card-opcoes .card a b{
+    color: #ff4500;
+}

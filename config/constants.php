@@ -33,5 +33,7 @@ define('DB_PASSWORD', '');
 define('MAIL_HOST', 'smtp.gmail.com');
 define('MAIL_PORT',  587);
 define('MAIL_NAME', 'Bicho Novo Pet Shop');
-define('MAIL_USER', '');
+define('MAIL_USER', 'eb006439@cfjl.com.br');
 define('MAIL_PASS', '');
+define('MAIL_CONTACTNAME', 'Eduardo');
+define('MAIL_CONTACTMAIL', 'eb006439@cfjl.com.br');

@@ -1,14 +1,19 @@
 <div class="container my-3">
+
+<h1 class="h3 text-center mt-3">Promoções</h1>
+
+<hr class="mb-5">
+
   <div class="site-card-promocoes">
 
     <?php
-    foreach ($promocoes as $p) {
+    foreach ($promocao as $p) {
       $imgLink = $p['imagens'][0]['url'] ?? '';
         
       echo <<<HTML
               <a href="#" class="text-decoration-none text-body">
                 <div class="col-12 pb-2">
-                  <div class="card-esmpresas card border-dark">
+                  <div class="card-empresas card border-dark">
                     <div class="card-body row">
                       <div class="row">
                         <div class="col-5">

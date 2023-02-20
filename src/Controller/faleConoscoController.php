@@ -2,20 +2,20 @@
 
 namespace Petshop\Controller;
 
-use Petshop\Core\Exception;
-use  Petshop\Core\FrontController;
+use Exception;
+use Petshop\Core\FrontController;
+use Petshop\Core\SendMail;
 use Petshop\View\Render;
 use Respect\Validation\Validator as v;
-use Petshop\Core\SendMail;
 
 class FaleConoscoController extends FrontController
 {
     public function faleConosco()
     {
         $dados = [];
-        $dados['topo'] = $this->carregaHtmlTopo();
-        $dados['rodape'] = $this->carregaHtmlRodape();
-        $dados['formulario'] = $this->formFaleConosco();
+        $dados['topo'] = $this->carregaHTMLTopo();
+        $dados['rodape'] = $this->carregaHTMLRodape();
+        $dados['formulario'] = $this->FormFaleConosco();
 
         Render::front('fale-conosco', $dados);
     }
@@ -23,39 +23,40 @@ class FaleConoscoController extends FrontController
     public function postFaleConosco()
     {
         try {
-            if(empty($_POST['nome']) 
-            || empty($_POST['email']) 
-            || empty($_POST['mensagem'])) {
-                throw New Exception('Todos os campos devem estar preenchidos');
+            if (empty($_POST['nome']) ||
+                empty($_POST['email']) ||
+                empty($_POST['mensagem'])) {
+                throw new Exception('Todos os campos devem ser preenchidos');
             }
+            
             $nome = trim($_POST['nome']);
             $email = trim($_POST['email']);
             $mensagem = trim($_POST['mensagem']);
-            
-            if (strlen($nome)<6) {
-                throw New Exception('O nome precisa ser completo');
+            if (strlen($nome) < 6) {
+                throw new Exception('O nome precisa ser completo');
             }
 
             $emailValido = v::email()->validate($email);
             if (!$emailValido) {
-                throw new Exception('O email está incorreto');
+                throw new Exception('Email inválido');
             }
 
-            if (strlen($mensagem)<6) {
-                throw New Exception('Por favor, seja mais descritivo na mensagem');
+            if (strlen($mensagem) < 6) {
+                throw new Exception('Por favor, seja mais descritivo na mensagem');
             }
 
+            $assunto = 'Contato via site - ' . date('d/m/Y H:i:s');
             $mensagemFull = <<<HTML
-                    Olá, chegou o novo contato<br>
-                    <strong>Nome:</strong> {$nome}<br>
-                    <strong>E-mail:</strong> {$email}<br>
-                    <strong>Mensagem:</strong> <br> {$mensagem}<br>
+                Olá, chegou um novo contato <br>
+                - <strong>Nome:</strong> {$nome} <br>
+                - <strong>Email:</strong> {$email} <br>
+                - <strong>Mensagem:</strong> <br>{$mensagem} <br>
 
             HTML;
-            $assunto = 'Contato via site - ' . date('d/m/Y H:i:s');
-            SendMail::enviar(MAIL_NAME, MAIL_CONTACTMAIL, $assunto, $mensagemFull, $nome, $email);
-        }
-        catch(Exception $e) {
+
+            SendMail::enviar(MAIL_CONTACTNAME, $assunto, $mensagemFull, $nome, $email);
+
+        } catch(Exception $e) {
             $_SESSION['mensagem'] = [
                 'tipo' => 'warning',
                 'texto' => $e->getMessage()
@@ -66,18 +67,18 @@ class FaleConoscoController extends FrontController
         redireciona('/fale-conosco', 'success', 'Mensagem enviada com sucesso');
     }
 
-    private function formFaleConosco()
+    public function FormFaleConosco()
     {
         $dados = [
-            'btn-label'=>'Enviar Mensagem',
-            'btn-class'=>'btn btn-warning w-50',
-            'fields'=>[
-                ['type'=>'text', 'name'=>'nome', 'label'=>'Nome completo', 'required'=>true],
-                ['type'=>'email', 'name'=>'email', 'label'=>'E-mail', 'required'=>true],
-                ['type'=>'textarea', 'name'=>'mensagem', 'label'=>'Mensagem', 'rows'=>5,'required'=>true],
+            'btn_label'=>'Enviar mensagem',
+            'btn_class'=>'btn btn-warning w-50 text-light',
+            'fields' => [
+                ['type' => 'text', 'name' => 'nome', 'label' => 'Nome Completo', 'required' => true],
+                ['type' => 'email', 'name' => 'email', 'label' => 'E-mail', 'required' => true],
+                ['type' => 'textarea', 'name' => 'mensagem', 'label' => 'Mensagem', 'rows' => 5, 'required' => true]
             ]
-        
         ];
+
         return Render::block('form', $dados);
     }
 }

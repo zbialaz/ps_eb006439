@@ -12,7 +12,7 @@ class LoginController extends FrontController
     public function login()
     {
         if (!empty($_SESSION['cliente'])) {
-            "redireciona"('/meus-dados');
+            redireciona('/meus-dados');
         }
 
         $dados = [];
@@ -29,7 +29,7 @@ class LoginController extends FrontController
         $_SESSION = [];
         session_destroy();
         session_start();
-        "redireciona"('/login', 'info', 'Usuário desconectado');
+        redireciona('/login', 'info', 'Usuário desconectado');
     }
 
     public function postLogin()
@@ -61,7 +61,7 @@ class LoginController extends FrontController
             $nome = $_SESSION['cliente']['nome'];
             $_SESSION['cliente']['prinome'] = substr($nome, 0, strpos($nome, ' '));
             
-            "redireciona"('/meus-dados');
+            redireciona('/meus-dados');
 
         } catch(Exception $e) {
             $_SESSION['mensagem'] = [

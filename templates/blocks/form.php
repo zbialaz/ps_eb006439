@@ -1,15 +1,15 @@
 <?php
-$method    = $method    ?? 'POST';
-$action    = $action    ?? $_SERVER['REQUEST_URI'];
-$enctype   = $enctype   ?? 'application/x-www-form-urlencoded';
-$class     = $class     ?? 'row g-3';
-$btn_label = $btn_label ?? 'Enviar';
-$btn_class = $btn_class ?? 'btn btn-primary';
+    $method    = $method    ?? 'POST';
+    $action    = $action    ?? $_SERVER['REQUEST_URI'];
+    $enctype   = $enctype   ?? 'application/x-www-form-urlencoded';
+    $class     = $class     ?? 'row g-3';
+    $btn_label = $btn_label ?? 'Enviar';
+    $btn_class = $btn_class ?? 'btn btn-primary';
 ?>
 
 <form class="<?= $class ?>" method="<?= $method ?>" action="<?= $action ?>" enctype="<?= $enctype ?>">
-    <?php
-    foreach ($fields ?? [] as $f) {
+<?php
+    foreach ($fields??[] as $f) {
         if (empty($f['name'])) {
             continue;
         }
@@ -35,7 +35,7 @@ $btn_class = $btn_class ?? 'btn btn-primary';
             case 'checkbox':
                 $f['labelcheck'] = $f['labelcheck'] ?? 'Marcar';
                 $f['value']      = $f['value'] ?? '1';
-                $checked         = ($f['value'] == $postValue) ? 'checked' : '';
+                $checked         = ($f['value'] == $postValue) ? 'checked' : ''; 
                 echo <<<HTML
                         <div class="{$f['class']}">
                             <label class="form-label">{$f['label']}{$f['txt_required']}</label>
@@ -50,8 +50,8 @@ $btn_class = $btn_class ?? 'btn btn-primary';
                 break;
             case 'select':
                 $options = '';
-                foreach ($f['options'] as $o) {
-                    $selected = ($o['value'] == $postValue) ? 'selected' : '';
+                foreach($f['options'] as $o) {
+                    $selected = ($o['value'] == $postValue) ? 'selected' : ''; 
                     $options .= sprintf('<option value="%s" %s>%s</option>', $o['value'], $selected, $o['label']);
                 }
                 echo <<<HTML
@@ -67,8 +67,8 @@ $btn_class = $btn_class ?? 'btn btn-primary';
             case 'radio-inline':
                 $html = '';
                 $qtd = 1;
-                foreach ($f['options'] as $o) {
-                    $checked = ($o['value'] == $postValue) ? 'checked' : '';
+                foreach($f['options'] as $o) {
+                    $checked = ($o['value'] == $postValue) ? 'checked' : ''; 
                     $html .= <<<HTML
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="{$f['name']}" id="{$f['name']}{$qtd}" value="{$o['value']}" {$f['required']} {$checked}>
@@ -86,26 +86,26 @@ $btn_class = $btn_class ?? 'btn btn-primary';
                         </div>
                         HTML;
                 break;
-            case 'text-area':
+            case 'textarea':
                 $rows = $f['rows'] ?? '';
                 $cols = $f['cols'] ?? '';
                 echo <<<HTML
                         <div class="{$f['class']}">
                             <label for="{$f['name']}" class="form-label">{$f['label']}{$f['txt_required']}</label>
-                            <textarea class="form-control" id="{$f['name']}" name="{$f['name']}" placeholder="{$f['placeholder']}" rows="{$rows}" cols="{$cols}" {$f['required']}>{$postValue}</textarea>
+                            <textarea type="{$f['type']}" class="form-control" id="{$f['name']}" name="{$f['name']}" placeholder="{$f['placeholder']}" rows="{$rows}" cols="{$cols}" {$f['required']}>{$postValue}</textarea>
                         </div>
                     HTML;
                 break;
             case 'readonly':
                 echo <<<HTML
-                            <div class="{$f['class']}">
-                                <label class="form-label">{$f['label']}{$f['txt_required']}</label>
-                                <input type="text" readonly class="form-control-plaintext border rounded bg-light ps-1" value="{$postValue}">
-                            </div>
-                        HTML;
+                        <div class="{$f['class']}">
+                            <label for="{$f['name']}" class="form-label">{$f['label']}{$f['txt_required']}</label>
+                            <input type="text", readonly class="form-control-plaintext border bg-light ps-2" value="{$postValue}">
+                        </div>
+                    HTML;
                 break;
             case 'file':
-                $f['accept'] = empty($f['accept']) ? '' : "accept='{$f['accept']}'";
+                $f['required'] = empty($f['required']) ? '' : "accept='{$f['required']}'";
                 echo <<<HTML
                         <div class="{$f['class']}">
                             <label for="{$f['name']}" class="form-label">{$f['label']}{$f['txt_required']}</label>
@@ -115,7 +115,7 @@ $btn_class = $btn_class ?? 'btn btn-primary';
                 break;
         }
     }
-    ?>
+?>
 
     <div class="col-12 text-center">
         <button type="submit" class="<?= $btn_class ?>"><?= $btn_label ?></button>

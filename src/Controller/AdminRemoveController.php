@@ -1,48 +1,49 @@
 <?php
+
 namespace Petshop\Controller;
 
+use Exception;
 use Petshop\Core\DB;
-use Petshop\Core\Exception;
 
 class AdminRemoveController
 {
-  public function remove($model, $idmodel)
-  {
-    $urlOrigemClique = $_SERVER['HTTP_REFERER'];
+    public function acao($model, $idModel)
+    {
+        $urlOrigemClick = $_SERVER['HTTP_REFERER'];
 
-    $modelPath = "Petshop\\Model\\{$model}";
-    if (!class_exists($modelPath)) {
-      redireciona($urlOrigemClique, 'danger', 'Página não localizada. Classe de dados destino não definida');
-    }
-
-    $objeto = new $modelPath;
-
-    if(!$objeto->loadById($idmodel)) {
-      redireciona($urlOrigemClique, 'danger', 'O registro informado não foi localizado em: ' . $model);
-    }
-    try {
-      $tabelaAlvo = $objeto->getTableName();
-      $campoChave = $objeto->getPkName();
-
-      if($tabelaAlvo == 'arquivos') {
-        $nomeArquivo = $objeto->idarquivo . '.' . pathinfo($objeto->nome, PATHINFO_EXTENSION);
-        $nomeArquivo = PATH_PROJETO . 'public/assets/img/uploads/' . $nomeArquivo;
-      }
-
-      $sql = "DELETE FROM {$tabelaAlvo} WHERE {$campoChave} = ?";
-      $std = DB::query($sql, [$idmodel]);
-
-      if($std->rowCount()) {
-        if(!empty($nomeArquivo)) {
-          unlink($nomeArquivo);
+        $modelPath = "Petshop\\Model\\{$model}";
+        if (!class_exists($modelPath)) {
+            redireciona($urlOrigemClick, 'danger', 'Página não localizada/Classe de dados destino não definida');
         }
-        redireciona($urlOrigemClique, 'success', 'Registro removido com sucesso');
-      }
 
-      redireciona($urlOrigemClique, 'warning', 'Registro não pôde ser removido');
+        $objeto = new $modelPath;
 
-    } catch(Exception $e) {
-      redireciona($urlOrigemClique,'danger', $e->getMessage());
+        if (!$objeto->loadById($idModel)) {
+            redireciona($urlOrigemClick, 'danger', 'O registro informado não foi localizado em ' . $model);
+        }
+
+        try {
+            $tabelaAlvo = $objeto->getTableName();
+            $campoChave = $objeto->getPkName();
+
+            if ($tabelaAlvo == 'arquivos') {
+                $nomeArquivo = $objeto->idArquivo . '.' . pathinfo($objeto->nome, PATHINFO_EXTENSION);
+                $nomeArquivo = PATH_PROJETO . 'public/assets/img/uploads/' . $nomeArquivo;
+            }
+
+            $sql = "DELETE FROM {$tabelaAlvo} WHERE {$campoChave} = ?";
+            $st = DB::query($sql, [$idModel]);
+
+            if ($st->rowCount()) {
+                if (!empty($nomeArquivo)) {
+                    unlink($nomeArquivo);
+                }
+                redireciona($urlOrigemClick, 'success', 'Registro removido com sucesso');
+            }
+            redireciona($urlOrigemClick, 'warning', 'Registro não pôde ser removido');
+
+        } catch(Exception $e) {
+            redireciona($urlOrigemClick, 'danger', $e->getMessage());
+        }
     }
-  }
 }

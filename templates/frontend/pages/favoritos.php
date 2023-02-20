@@ -1,22 +1,26 @@
-<?php
+<div class="container">
 
-    //$cliente = $_SESSION['cliente']; 
-    //$cliente['prinome'] = substr($cliente['nome'], 0, strpos($cliente['nome'], ' ')); 
+<h1 class="h3 text-center mt-3">Favoritos</h1>
 
-    ?>
-<div class="container my-5">
-  <div class="row">
-    <div class="col-3 text-center">
-      <div>Bem vindo(a): <strong><?= $cliente['prinome']?></strong></div>
-      <div style="font-size:.8em;">(<?= $cliente['email']?>)</div>
-      <div class="mt-5">
-        <a href="/logout" class="badge text-bg-warning text-decoration-none">SAIR</a>
-      </div>
+    <hr class="mb-5">
+
+    <div class="row row-cols-5">
+        <?php
+            foreach($produtos as $p) {
+                $primeiraImagem = $p['imagens'][0]['url'] ?? 'https://picsum.photos/300';
+                $preco = number_format($p['preco'], 2, ',', '.');
+                $nome = strlen($p['nome'])<50 ? $p['nome'] : substr($p['nome'], 0, 50) . '...';
+                $link = '/produtos/'.$p['idproduto'];
+
+                echo <<<HTML
+                    <div class="col produto position-relative mb-3">
+                        <img src="{$primeiraImagem}" class="img-fluid rounded" alt="{$p['nome']}">
+                        <p class="mb-0 mt-2 text-center"><strong>{$nome}</strong></p>
+                        <a href="{$link}" class="btn btn-success btn-sm w-100 my-2 stretched-link">R$ {$preco}</a>
+                    </div>
+                HTML;
+            }
+        ?>
     </div>
-    <div class="col-9 ps-5">
-      - Meus Pedidos<br>
-      - Meus endereços<br>
-      - Meus favoritos
-    </div>
-  </div>
+
 </div>

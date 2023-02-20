@@ -3,47 +3,27 @@
 namespace Petshop\Controller;
 
 use Petshop\Core\FrontController;
-use Petshop\View\Render;
 use Petshop\Model\Empresa;
+use Petshop\View\Render;
 
-class NossasLojasController extends FrontController {
-
-    public function listar() {
+class NossasLojasController extends FrontController
+{
+    public function nossasLojas()
+    {
+        // $valor = 0;
+        // $objeto = new Empresa;
+        //     $resultado = $objeto->find(['idempresa =' => $valor]);
+        //     if(empty($resultado)) {
+        //         redireciona('/nossas-lojas', 'danger', 'Link inválido, registro não localizado');
+        //     }
+        //     $_POST = $resultado[0];
 
         $dados = [];
-        $dados['topo'] = $this->carregaHtmlTopo();
-        $dados['rodape'] = $this->carregaHtmlRodape();
-        $dados['empresa'] = $_SESSION['empresa'];
-
-            Render::front('nossas-lojas', $dados);
+        $dados['titulo'] = 'Nossas Lojas';
+        $dados['topo'] = $this->carregaHTMLTopo();
+        $dados['rodape'] = $this->carregaHTMLRodape();
+        
+        Render::front('nossas-lojas', $dados);
     }
-}
-?>
 
-<!DOCTYPE html> 
-  <html> 
-    <head> 
-      <meta charset="UTF-8"> 
-      <title>Tutorial</title> 
-    </head> 
-    <body> 
-      <table border="1"> 
-        <tr> 
-          <td>Id</td> 
-          <td>Nome</td>
-        </tr> 
-        <?php while($dados = $con->fetch_array()) { ?> 
-        <tr> 
-          <td><?php echo $dados['idempresa']; ?></td>
-          <td><?php echo $dados['nomefantasia']; ?></td> 
-          <td><?php //echo $dado['usu_email']; ?></td> 
-          <td><?php //echo date('d/m/Y', strtotime($dado['usu_datadecadastro'])); ?></td> 
-          <td> 
-          </td> 
-        </tr> 
-        <?php }
-       
-        ?> 
-      </table> 
-    </body> 
-</html>
+}

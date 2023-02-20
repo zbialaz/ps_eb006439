@@ -1,4 +1,5 @@
 <?php
+
 namespace Petshop\Model;
 
 use Petshop\Core\Attribute\Campo;
@@ -8,123 +9,117 @@ use Petshop\Core\Exception;
 use Respect\Validation\Validator as v;
 
 #[Entidade(name: 'usuarios')]
+
 class Usuario extends DAO
 {
-  #[Campo(label: 'Cód. Usuário', pk: true, nn: true, auto: true)]
-  protected $idUsuario;
+    #[Campo(label:'Cód. Usuario', nn:true, pk:true, auto:true)]
+    protected $idUsuario;
 
-  #[Campo(label: 'Nome Completo', nn: true, order:true)]
-  protected $nome;
+    #[Campo(label:'Tipo', nn:true)]
+    protected $tipo;
 
-  #[Campo(label: 'E-mail', nn: true)]
-  protected $email;
+    #[Campo(label:'Qtd. Acessos', nn:true)]
+    protected $qtdAcessos;
 
-  #[Campo(label: 'Senha', nn: true)]
-  protected $senha;
+    #[Campo(label:'Nome Completo', nn:true, order:true)]
+    protected $nome;
 
-  #[Campo(label: 'Tipo', nn: true)]
-  protected $tipo;
+    #[Campo(label:'E-mail', nn:true)]
+    protected $email;
 
-  #[Campo(label: 'Qtd. acessos', nn: true)]
-  protected $qtdAcessos;
+    #[Campo(label:'Senha', nn:true)]
+    protected $senha;
+    
+    #[Campo(label:'Dt. Criação', nn:true, auto:true)]
+    protected $created_at;
 
-  #[Campo(label: 'Dt. Criação', nn: true, auto: true)]
-  protected $created_at;
+    #[Campo(label:'Dt. Alteração', nn:true, auto:true)]
+    protected $updated_at;
 
-  #[Campo(label: 'Dt. Alteração', nn: true, auto: true)]
-  protected $updated_at;
-
-
-  public function getIdUsuario()
-  {
-    return $this->idUsuario;
-  }
-
-  public function getNome()
-  {
-    return $this->nome;
-  }
-
-  public function setNome(string $nome): self
-  {
-    $this->nome = $nome;
-
-    return $this;
-  }
-
-  public function getEmail()
-  {
-    return $this->email;
-  }
-
-  public function setEmail(string $email): self
-  {
-    $email = strtolower($email);
-
-    $emailValido = v::email()->validate($email);
-    if (!$emailValido) {
-      throw new Exception('O e-mail informado é inválido');
+    public function getIdUsuario()
+    {
+        return $this->idUsuario;
     }
 
-    $this->email = $email;
-    return $this;
-  }
-
-  public function getSenha()
-  {
-    return $this->senha;
-  }
-
-  public function setSenha(string $senha): self
-  {
-    if($this->senha && !$senha) {
-      return $this;
+    public function getTipo()
+    {
+        return $this->tipo;
     }
-    if (strlen($senha) < 5) {
-      throw new Exception('O comprimento da senha é inválido, digite ao menos cinco caracteres');
+    public function setTipo(string $tipo): self
+    {
+        $tipo = trim($tipo);
+        if (!in_array($tipo, ['Gestor', 'Vendedor'])) {
+            throw new Exception('O tipo de pessoa não está definido corretamente');
+        }
+
+        $this->tipo = $tipo;
+        return $this;
     }
 
-    $hashdaSenha = hash_hmac('md5', $senha, SALT_SENHA);
-    $senha = password_hash($hashdaSenha, PASSWORD_DEFAULT);
-    $this->senha = $senha;
-    return $this;
-  }
-
-  public function getTipo()
-  {
-    return $this->tipo;
-  }
-
-  public function setTipo(string $tipo): self
-  {
-    $tipo = trim($tipo);
-    if (!in_array($tipo, ['Gestor', 'Vendedor'])) {
-      throw new Exception('O tipo de pessoa não está definido corretamente');
+    public function getQtdAcessos()
+    {
+        return $this->qtdAcessos;
+    }
+    public function setQtdAcessos(int $qtdAcessos): self
+    {
+        $this->qtdAcessos = $qtdAcessos;
+        return $this;
     }
 
-    $this->tipo = $tipo;
-    return $this;
-  }
+    public function getNome()
+    {
+        return $this->nome;
+    }
+    public function setNome(string $nome): self
+    {
+        $this->nome = $nome;
+        return $this;
+    }
 
-  public function getQtdAcessos()
-  {
-    return $this->qtdAcessos;
-  }
+    public function getEmail()
+    {
+        return $this->email;
+    }
+    public function setEmail(string $email): self
+    {
+        $email = strtolower(trim($email));
 
-  public function setQtdAcessos(int $qtdAcessos): self
-  {
-    $this->qtdAcessos = $qtdAcessos;
+        $emailValido = v::email()->validate($email);
+        if (!$emailValido) {
+            throw new Exception('O email informado é inválido');
+        }
 
-    return $this;
-  }
+        $this->email = $email;
+        return $this;
+    }
 
-  public function getCreated_At()
-  {
-    return $this->created_at;
-  }
+    public function getSenha()
+    {
+        return $this->senha;
+    }
+    public function setSenha(string $senha): self
+    {
+        if ($this->senha && !$senha) {
+            return $this;
+        }
 
-  public function getUpdated_At()
-  {
-    return $this->updated_at;
-  }
+        if (strlen($senha) < 5) {
+            throw new Exception('Senha muito curta, digite ao menos 5 caracteres');
+        }
+        $hashDaSenha = hash_hmac('md5', $senha, SALT_SENHA);
+        $senha = password_hash($hashDaSenha, PASSWORD_DEFAULT);
+        
+        $this->senha = $senha;
+        return $this;
+    }
+
+    public function getCreated_At()
+    {
+        return $this->created_at;
+    }
+
+    public function getUpdated_At()
+    {
+        return $this->updated_at;
+    }
 }
