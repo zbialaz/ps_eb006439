@@ -1,0 +1,72 @@
+.topo-site {
+    background-color: #231f20;
+    color: #efe6dd;
+}
+
+.topo-site a {
+    color: #efe6dd;
+    transition: 200ms;
+}
+
+.topo-site a:hover {
+    color: #f4dfa2;
+}
+
+.topo-site .input-busca {
+    box-shadow: none;
+    border-color: transparent; 
+}
+
+.topo-site .btn-busca {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    width: 3em;
+}
+
+.topo-site .dropdown-menu {
+    background-color: #231320;
+}
+
+.rodape-site {
+    background-color:#efe6dd;
+    color:#777;
+}
+
+.pgto-social .fa-brands:hover {
+    color: #333;
+}
+
+.pgto-social a,
+.pgto-social svg {
+    color: #777;
+    text-decoration: none;
+    transition: 200ms;
+}
+
+.rodape-site .pgto-social a:hover,
+.rodape-site .pgto-social svg:hover {
+    color: #333;
+}
+
+.rodape-site .info-matriz {
+    font-size: .8em;
+}
+
+/* classes de apoio */
+
+.pg-login .btn-conta {
+    margin-top: 5em;
+}
+
+.site-card-opcoes .card a {
+    text-decoration: none;
+    color:#231f20;
+}
+
+.site-card-opcoes .card a b{
+    color: #ff4500;
+}
